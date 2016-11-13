@@ -6,7 +6,7 @@
 #    By: hmartzol <hmartzol@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/06/15 00:21:43 by hmartzol          #+#    #+#              #
-#    Updated: 2016/11/02 11:22:54 by hmartzol         ###   ########.fr        #
+#    Updated: 2016/11/08 18:10:22 by hmartzol         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,11 +135,11 @@ endif
 ifeq ($(OS),Linux)
 TASKS = $(shell 1 + $(shell grep -c ^processor /proc/cpuinfo))
 ifneq ($(MLXFOUND), )
-ifneq ($(wildcard minilibx_X11/.),)
-MLX = minilibx_X11
+ifneq ($(wildcard ../minilibx_X11/.),)
+MLX = ../minilibx_X11
 LMLX = libmlx.a
-MLXFLAGS = -lXext -lX11 minilibx_X11/libmlx.a
-IMLX = -Iminilibx_X11
+MLXFLAGS = -lXext -lX11 ../minilibx_X11/libmlx.a
+IMLX = -I../minilibx_X11
 else
 MLXFLAGS = -lXext -lX11 -lmlx
 endif
@@ -148,11 +148,11 @@ endif
 ifeq ($(OS),Darwin)
 TASKS = $(shell 1 + $(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}'))
 ifneq ($(MLXFOUND), )
-ifneq ($(wildcard minilibx/.),)
-MLX = minilibx
+ifneq ($(wildcard ../minilibx/.),)
+MLX = ../minilibx
 LMLX = libmlx.a
-MLXFLAGS = -framework OpenGL -framework AppKit minilibx/libmlx.a
-IMLX = -Iminilibx
+MLXFLAGS = -framework OpenGL -framework AppKit ../minilibx/libmlx.a
+IMLX = -I../minilibx
 else
 MLXFLAGS = -framework OpenGL -framework AppKit -lmlx
 endif
